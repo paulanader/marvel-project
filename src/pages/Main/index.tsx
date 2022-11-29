@@ -18,7 +18,7 @@ export const Main = () => {
       <Header />
       <Container className="mt-3">
         {characters && (
-          <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
             {characters.map((character) => (
               <div key={character.name} className="col d-flex">
                 <CharacterCard character={character} />

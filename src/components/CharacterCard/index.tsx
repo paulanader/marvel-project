@@ -1,6 +1,6 @@
 import { CharacterType } from "../../@types/CharacterType";
 import { getThumbnail } from "../../uteis/data";
-import { Container } from "./styles";
+import { Container, Title } from "./styles";
 
 interface ICharacterCardProps {
   character: CharacterType;
@@ -8,15 +8,22 @@ interface ICharacterCardProps {
 
 export const CharacterCard: React.FC<ICharacterCardProps> = ({ character }) => {
   return (
-    <Container className="card align-self-stretch w-100">
-      <img
-        className="card-img-top w-100"
-        src={getThumbnail(character.thumbnail)}
-        alt="Imagem"
-      />
-      <div className="card-body d-flex justify-content-center">
-        <h4>{character.name}</h4>
-      </div>
-    </Container>
+    <>
+      {character.thumbnail.extension && character.thumbnail.path && (
+        <Container className="card align-self-stretch w-100 justify-content-center">
+          <img
+            className="card-img-top w-100 mb-2"
+            src={getThumbnail(character.thumbnail)}
+            alt="Imagem"
+          />
+          <Title
+            to={`/${character.id}`}
+            className="stretched-link mt-auto d-flex text-center justify-content-center"
+          >
+            <h4 className="mt-auto text-center d-flex">{character.name}</h4>
+          </Title>
+        </Container>
+      )}
+    </>
   );
 };

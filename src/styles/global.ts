@@ -6,8 +6,9 @@ export const GlobalStyle = createGlobalStyle`
     --color-yellow: #f4e427;
     --color-red: #c0392b;
     --color-dark: #121214;
-    --color-dark-gray: #202024;
+    --color-dark-gray: rgba(32, 32, 36, 0.95);
     --color-gray: #666666;
+    --color-second-gray: #d3d3d3;
     --color-light-gray: #e3e3e3;
     
     }
@@ -23,7 +24,6 @@ export const GlobalStyle = createGlobalStyle`
 
     body,input, textarea, button {
         font-family: 'Lato';
-        color: var(--color-light-gray);
     }   
 
     button {
@@ -37,4 +37,9 @@ export const GlobalStyle = createGlobalStyle`
 
 
     .cursor-pointer { cursor: pointer; }
+
+    .selected-nav { 
+        color: var(--color-red);
+    }
+
 `;

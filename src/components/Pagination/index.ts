@@ -17,12 +17,12 @@ const Pagination = styled(ReactPaginate)`
       border-radius: 3px;
 
       text-decoration: none;
-      background-color: var(--red);
+      background-color: var(--color-gray);
       color: #fff !important;
     }
 
     &.selected a {
-      background-color: var(--red);
+      background-color: var(--color-red);
     }
 
     &.previous,
