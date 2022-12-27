@@ -20,7 +20,9 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
         <>
           {page && (
             <li className="breadcrumb-item">
-              <Link href={link}>{page}</Link>
+              <Link href={link} data-testid="link-page">
+                {page}
+              </Link>
             </li>
           )}
         </>
