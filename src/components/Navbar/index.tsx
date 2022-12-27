@@ -1,17 +1,12 @@
-import { Nav } from "./styles";
+import { Line, Nav } from "./styles";
 import { AiOutlineMenu } from "react-icons/ai";
+import { ItemType } from "../../@types/ItemType";
 
 interface INavbarProps {
-  items: [
-    {
-      title: string;
-      id: string;
-    }
-  ];
-  selected?: boolean;
+  items: ItemType[];
 }
 
-export const Navbar: React.FC<INavbarProps> = ({ items, selected }) => {
+export const Navbar: React.FC<INavbarProps> = ({ items }) => {
   return (
     <Nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -29,17 +24,16 @@ export const Navbar: React.FC<INavbarProps> = ({ items, selected }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {items.map((item) => (
-              <li className={`nav-item `}>
+              <Line className={`nav-item`} key={item.id}>
                 <a
-                  className={`nav-link active ${
-                    selected ? "selected-nav" : "text-white"
-                  }`}
+                  className="nav-link active text-white"
                   aria-current="page"
                   href={`/${item.id}`}
+                  data-testid={`link-${item.title}`}
                 >
                   {item.title}
                 </a>
-              </li>
+              </Line>
             ))}
           </ul>
         </div>

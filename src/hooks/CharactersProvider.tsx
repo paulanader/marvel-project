@@ -10,11 +10,13 @@ import { CharacterType } from "../@types/CharacterType";
 import { Api } from "../services/api";
 
 interface ICharactersContextProp {
+  character: CharacterType | null;
   characters: CharacterType[];
   isLoading: boolean;
   pageCount: number;
   currentPage: number;
   isLastPage: boolean;
+  getCharacter: (id: string) => void;
   getCharacters: (page?: number) => void;
 }
 
@@ -40,6 +42,7 @@ export const CharactersProvider: React.FC<ICharactersProviderProps> = ({
   children,
 }) => {
   const [characters, setCharacters] = useState<CharacterType[]>([]);
+  const [character, setCharacter] = useState<CharacterType | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [isLastPage, setIsLastPage] = useState(false);
@@ -75,16 +78,42 @@ export const CharactersProvider: React.FC<ICharactersProviderProps> = ({
     }
   }, []);
 
+  const getCharacter = useCallback(async (id: string) => {
+    setIsLoading(true);
+
+    try {
+      let url = `/characters/${id}?ts=1&apikey=61c2e48bb48d5c410b93389820c710b1&hash=d139ac9c3eb046861b8fd4b7bd23e163`;
+
+      const response = await Api.get(url);
+      setCharacter(response.data?.data?.results[0] ?? null);
+    } catch (e) {
+      setCharacter(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const providerValue = useMemo(
     () => ({
+      character,
       characters,
       isLoading,
       currentPage,
       isLastPage,
       pageCount,
       getCharacters,
+      getCharacter,
     }),
-    [characters, isLoading, pageCount, currentPage, isLastPage, getCharacters]
+    [
+      character,
+      characters,
+      isLoading,
+      currentPage,
+      isLastPage,
+      pageCount,
+      getCharacter,
+      getCharacters,
+    ]
   );
 
   return (

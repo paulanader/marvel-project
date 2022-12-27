@@ -17,7 +17,7 @@ export const CharacterCard: React.FC<ICharacterCardProps> = ({ character }) => {
             alt="Imagem"
           />
           <Title
-            to={`/${character.id}`}
+            to={`/characteres/${character.id}`}
             className="stretched-link mt-auto d-flex text-center justify-content-center"
           >
             <h4 className="mt-auto text-center d-flex">{character.name}</h4>

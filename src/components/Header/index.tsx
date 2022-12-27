@@ -6,11 +6,18 @@ import { Navbar } from "../Navbar";
 export const Header = () => {
   return (
     <MainHeader>
-      <Container className="p-1">
+      <Container className="mt-4">
         <div className="d-flex justify-content-center">
           <Logo src={logoImg} alt="logo" className="img-fluid" />
         </div>
-        <Navbar items={[{ title: "Characteres", id: "characteres" }]} />
+        <div className="d-flex justify-content-center">
+          <Navbar
+            items={[
+              { title: "Home", id: "" },
+              { title: "Characteres", id: "characteres" },
+            ]}
+          />
+        </div>
       </Container>
     </MainHeader>
   );
