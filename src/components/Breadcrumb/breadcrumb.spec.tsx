@@ -20,6 +20,15 @@ describe("Breadcrumb", () => {
     expect(pageTitle).toBeInTheDocument();
   });
 
+  it("should not show the page link", () => {
+    const { queryByTestId } = render(
+      <Breadcrumb link="/home" pageTitle="Characteres" />
+    );
+    const page = queryByTestId("link-page");
+
+    expect(page).not.toBeInTheDocument();
+  });
+
   it("should have the href attribute", () => {
     const { getByTestId } = render(
       <Breadcrumb link="/home" page="Characteres" pageTitle="Character" />
