@@ -9,6 +9,6 @@ export const Line = styled.li`
   font-size: 20px;
 
   &:hover {
-    border-bottom: 3px solid var(--color-red);
+    border-bottom: 1.5px solid var(--color-red);
   }
 `;

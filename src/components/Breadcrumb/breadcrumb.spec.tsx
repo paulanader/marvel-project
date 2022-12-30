@@ -2,7 +2,6 @@
 /* eslint-disable testing-library/no-debugging-utils */
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { Breadcrumb } from "./index";
 
 describe("Breadcrumb", () => {
