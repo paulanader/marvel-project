@@ -8,7 +8,7 @@ interface INavbarProps {
 
 export const Navbar: React.FC<INavbarProps> = ({ items }) => {
   return (
-    <Nav className="navbar navbar-expand-lg">
+    <Nav className="navbar navbar-expand-lg" data-testid="navbar-container">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -18,6 +18,7 @@ export const Navbar: React.FC<INavbarProps> = ({ items }) => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          data-testid="navbar-icon-button"
         >
           <AiOutlineMenu color="#ffffff" />
         </button>
